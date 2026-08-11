@@ -207,86 +207,43 @@
             </div>
         </section>
 
-        <section id="productos" class="section-spacing">
+        <section id="productos" class="section-spacing products-section">
             <div class="container">
-                <div class="row justify-content-between align-items-end mb-5">
+                <div class="row justify-content-between align-items-end mb-4">
                     <div class="col-lg-6">
                         <span class="section-label">Tienda</span>
-                        <h2 class="section-title">Favoritos tejidos con calma</h2>
+                        <h2 class="section-title">Una experiencia de compra más cuidada</h2>
                     </div>
                     <div class="col-lg-5">
                         <p class="text-muted mb-0">
-                            Cada pieza puede personalizarse en colores, tamano y detalles para que tenga tu propia
-                            magia.
+                            Explora categorías, compara precios y elige la pieza perfecta para regalar o guardar.
                         </p>
                     </div>
                 </div>
 
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-3">
-                        <article class="product-card">
-                            <img src="https://i.pinimg.com/736x/58/34/ff/5834ff784430e385153635e5f56345d6.jpg"
-                                alt="Amigurumi con fresa" loading="lazy">
-                            <div class="product-body">
-                                <span>Gorrito</span>
-                                <h3>Gorrito tejido de fresas</h3>
-                                <p>Gorrito tejido de color rosa pastel con bordado de fresas sobresalientes</p>
-                                <div class="product-footer">
-                                    <strong>$65.000</strong>
-                                    <a href="#contacto">Pedir</a>
-                                </div>
-                            </div>
-                        </article>
+                <div class="product-toolbar">
+                    <div class="product-filters" id="filtrosProductos" role="tablist" aria-label="Filtrar productos">
+                        <button class="filter-pill active" data-category="all" aria-pressed="true">Todos</button>
+                        <button class="filter-pill" data-category="amigurumis" aria-pressed="false">Amigurumis</button>
+                        <button class="filter-pill" data-category="bolsos" aria-pressed="false">Bolsos</button>
+                        <button class="filter-pill" data-category="accesorios" aria-pressed="false">Accesorios</button>
+                        <button class="filter-pill" data-category="ramos" aria-pressed="false">Ramos</button>
+                        <button class="filter-pill" data-category="otros" aria-pressed="false">Otros</button>
                     </div>
-
-                    <div class="col-md-6 col-lg-3">
-                        <article class="product-card">
-                            <img src="https://i.pinimg.com/736x/c1/d3/77/c1d377e44071f83be403e44bc3216c6d.jpg"
-                                alt="Gorrito delicado" loading="lazy">
-                            <div class="product-body">
-                                <span>Amigurumi</span>
-                                <h3>Amigurumi delicado</h3>
-                                <p>Amigurumi de honguito tierno con bolsito listo para convertirse en tu mejor amigo.</p>
-                                <div class="product-footer">
-                                    <strong>$78.000</strong>
-                                    <a href="#contacto">Pedir</a>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-md-6 col-lg-3">
-                        <article class="product-card">
-                            <img src="https://i.pinimg.com/736x/98/db/08/98db08284b157ee6181bc31bd20df6ee.jpg"
-                                alt="Ramo tejido" loading="lazy">
-                            <div class="product-body">
-                                <span>Amigurumi</span>
-                                <h3>Amigurumi de elefante</h3>
-                                <p>Un elefante amable, gordito y acogedor para tener como compañero de juego.</p>
-                                <div class="product-footer">
-                                    <strong>$105.000</strong>
-                                    <a href="#contacto">Pedir</a>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="col-md-6 col-lg-3">
-                        <article class="product-card">
-                            <img src="https://i.pinimg.com/736x/61/e7/d5/61e7d50427668b179009f056b9c8f829.jpg"
-                                alt="Bolso tejido" loading="lazy">
-                            <div class="product-body">
-                                <span>Marca paginas</span>
-                                <h3>Marca paginas de flor</h3>
-                                <p>Unas lindas flores que te acompañaran y ayudaran a continuar y lectura sin esfuerzo.</p>
-                                <div class="product-footer">
-                                    <strong>$25.000</strong>
-                                    <a href="#contacto">Pedir</a>
-                                </div>
-                            </div>
-                        </article>
+                    <div class="product-toolbar-actions">
+                        <label class="visually-hidden" for="ordenProductos">Ordenar productos</label>
+                        <select class="form-select form-select-sm" id="ordenProductos">
+                            <option value="recent">Más recientes</option>
+                            <option value="popular">Más populares</option>
+                            <option value="price-asc">Precio menor a mayor</option>
+                            <option value="price-desc">Precio mayor a menor</option>
+                        </select>
+                        <button class="btn btn-outline-dark btn-sm" id="toggleFavoritos" type="button">Ver favoritos</button>
                     </div>
                 </div>
+
+                <p class="product-demo-note">Datos de demostración para la experiencia de compra.</p>
+                <div class="row g-4" id="productosGrid"></div>
             </div>
         </section>
 
@@ -342,20 +299,41 @@
 
         <section id="blog" class="section-spacing blog-section">
             <div class="container">
-                <div class="text-center mb-5">
-                    <span class="section-label">Blog</span>
-                    <h2 class="section-title">Tips y trucos de crochet</h2>
+                <div class="row align-items-end justify-content-between g-4 mb-5">
+                    <div class="col-lg-7">
+                        <span class="section-label">Blog</span>
+                        <h2 class="section-title">Tips y trucos de crochet</h2>
+                        <p class="section-copy">
+                            Pequeños consejos para que cada pieza quede más bonita, cómoda y llena de personalidad.
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog-highlights">
+                            <div class="blog-highlight-item">
+                                <i class="fa-solid fa-star"></i>
+                                <span>Patrones suaves para empezar</span>
+                            </div>
+                            <div class="blog-highlight-item">
+                                <i class="fa-solid fa-heart"></i>
+                                <span>Detalles con mucha dulzura</span>
+                            </div>
+                            <div class="blog-highlight-item">
+                                <i class="fa-solid fa-palette"></i>
+                                <span>Combinaciones de color armoniosas</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row g-4">
-                    <div class="col-lg-4">
-                        <article class="blog-card">
+                    <div class="col-lg-7">
+                        <article class="blog-card blog-card-featured">
                             <img src="https://i.pinimg.com/736x/0a/ae/f6/0aaef686f9bcc8b382236074e2072e4d.jpg"
                                 alt="Amigurumi con fresa" loading="lazy">
                             <div class="blog-body">
                                 <span class="blog-date">15 de mayo, 2026</span>
                                 <h3>Comenzando con amigurumi</h3>
-                                <p>Aprende los básicos para crear tus primeros muñecos tejidos. Consejos para principiantes.</p>
+                                <p>Aprende los básicos para crear tus primeros muñecos tejidos con una base sólida y muy cómoda.</p>
                                 <a href="#" class="read-more"
                                     data-title="Comenzando con amigurumi"
                                     data-date="15 de mayo, 2026"
@@ -366,40 +344,44 @@
                         </article>
                     </div>
 
-                    <div class="col-lg-4">
-                        <article class="blog-card">
-                            <img src="https://i.pinimg.com/736x/ae/dc/38/aedc38026abfcb55217f2ce4659a151e.jpg"
-                                alt="Patito con sombrero" loading="lazy">
-                            <div class="blog-body">
-                                <span class="blog-date">10 de mayo, 2026</span>
-                                <h3>Detalles adorables en crochet</h3>
-                                <p>Tips para crear detalles delicados y expresivos en tus piezas tejidas.</p>
-                                <a href="#" class="read-more"
-                                    data-title="Detalles adorables en crochet"
-                                    data-date="10 de mayo, 2026"
-                                    data-image="https://i.pinimg.com/736x/ae/dc/38/aedc38026abfcb55217f2ce4659a151e.jpg"
-                                    data-summary="Los pequeños detalles son los que convierten una pieza en algo imposible de olvidar: ojos expresivos, flores, lazos y texturas suaves."
-                                    data-content="Un buen detalle no necesita ser complicado; a veces, la diferencia está en la elección de colores y en cómo se trabaja cada pequeña forma. Una florecita, un lazo o una sonrisa a mano pueden cambiar completamente la personalidad del amigurumi.||Si quieres que tus piezas luzcan más tiernas, prueba jugar con texturas: puntos más apretados, pequeños remates o accesorios con contrastes suaves. Así cada muñeco se vuelve más memorable sin perder su esencia artesanal.">Leer más</a>
+                    <div class="col-lg-5">
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <article class="blog-card blog-card-stack">
+                                    <img src="https://i.pinimg.com/736x/ae/dc/38/aedc38026abfcb55217f2ce4659a151e.jpg"
+                                        alt="Patito con sombrero" loading="lazy">
+                                    <div class="blog-body">
+                                        <span class="blog-date">10 de mayo, 2026</span>
+                                        <h3>Detalles adorables en crochet</h3>
+                                        <p>Tips para crear detalles delicados y expresivos en tus piezas tejidas.</p>
+                                        <a href="#" class="read-more"
+                                            data-title="Detalles adorables en crochet"
+                                            data-date="10 de mayo, 2026"
+                                            data-image="https://i.pinimg.com/736x/ae/dc/38/aedc38026abfcb55217f2ce4659a151e.jpg"
+                                            data-summary="Los pequeños detalles son los que convierten una pieza en algo imposible de olvidar: ojos expresivos, flores, lazos y texturas suaves."
+                                            data-content="Un buen detalle no necesita ser complicado; a veces, la diferencia está en la elección de colores y en cómo se trabaja cada pequeña forma. Una florecita, un lazo o una sonrisa a mano pueden cambiar completamente la personalidad del amigurumi.||Si quieres que tus piezas luzcan más tiernas, prueba jugar con texturas: puntos más apretados, pequeños remates o accesorios con contrastes suaves. Así cada muñeco se vuelve más memorable sin perder su esencia artesanal.">Leer más</a>
+                                    </div>
+                                </article>
                             </div>
-                        </article>
-                    </div>
 
-                    <div class="col-lg-4">
-                        <article class="blog-card">
-                            <img src="https://i.pinimg.com/736x/be/68/09/be68093c20e1df95900c7458e324ce70.jpg"
-                                alt="Bolso crochet rosa" loading="lazy">
-                            <div class="blog-body">
-                                <span class="blog-date">5 de mayo, 2026</span>
-                                <h3>Bolsos tejidos paso a paso</h3>
-                                <p>Tutorial completo para crear bolsos únicos y personalizados.</p>
-                                <a href="#" class="read-more"
-                                    data-title="Bolsos tejidos paso a paso"
-                                    data-date="5 de mayo, 2026"
-                                    data-image="https://i.pinimg.com/736x/be/68/09/be68093c20e1df95900c7458e324ce70.jpg"
-                                    data-summary="Un bolso tejido no solo es útil, también puede convertirse en un accesorio que refleja estilo, color y personalidad en cada puntada."
-                                    data-content="Para hacer un bolso artesanal, empieza por definir la forma y el tamaño que necesitas. Luego diseña la base con puntadas firmes para que soporte bien el uso diario y mantenga su estructura con buena caída.||La parte más divertida llega cuando decides los detalles: asas, botones, remates o ajustes de color. Un bolso tejido se vuelve especial cuando combina funcionalidad con un toque único que te haga sentirlo como tuyo.">Leer más</a>
+                            <div class="col-12">
+                                <article class="blog-card blog-card-stack">
+                                    <img src="https://i.pinimg.com/736x/be/68/09/be68093c20e1df95900c7458e324ce70.jpg"
+                                        alt="Bolso crochet rosa" loading="lazy">
+                                    <div class="blog-body">
+                                        <span class="blog-date">5 de mayo, 2026</span>
+                                        <h3>Bolsos tejidos paso a paso</h3>
+                                        <p>Tutorial completo para crear bolsos únicos y personalizados con buen acabado.</p>
+                                        <a href="#" class="read-more"
+                                            data-title="Bolsos tejidos paso a paso"
+                                            data-date="5 de mayo, 2026"
+                                            data-image="https://i.pinimg.com/736x/be/68/09/be68093c20e1df95900c7458e324ce70.jpg"
+                                            data-summary="Un bolso tejido no solo es útil, también puede convertirse en un accesorio que refleja estilo, color y personalidad en cada puntada."
+                                            data-content="Para hacer un bolso artesanal, empieza por definir la forma y el tamaño que necesitas. Luego diseña la base con puntadas firmes para que soporte bien el uso diario y mantenga su estructura con buena caída.||La parte más divertida llega cuando decides los detalles: asas, botones, remates o ajustes de color. Un bolso tejido se vuelve especial cuando combina funcionalidad con un toque único que te haga sentirlo como tuyo.">Leer más</a>
+                                    </div>
+                                </article>
                             </div>
-                        </article>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -454,164 +436,109 @@
 
         <section id="precios" class="section-spacing pricing-section">
             <div class="container">
-                <div class="text-center mb-5">
+                <div class="text-center mb-4">
                     <span class="section-label">Planes y servicios</span>
-                    <h2 class="section-title">Precios de nuestros servicios</h2>
+                    <h2 class="section-title">Precios claros y fáciles de comparar</h2>
                 </div>
 
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="pricing-card">
-                            <div class="pricing-header">
-                                <h3>Amigurumi individual</h3>
-                                <span class="pricing-badge">Popular</span>
-                            </div>
-                            <div class="pricing-body">
-                                <p class="text-muted">Perfecto para empezar</p>
-                                <div class="price-display">
-                                    <span class="price">$45.000</span>
-                                    <span class="period">/unidad</span>
-                                </div>
-                                <ul class="pricing-features">
-                                    <li>Diseño personalizado</li>
-                                    <li>Colores a tu elección</li>
-                                    <li>Entrega en 1-2 semanas</li>
-                                    <li>Empaque especial</li>
-                                </ul>
-                                <a href="#contacto" class="btn btn-shop btn-sm w-100">Encargar ahora</a>
-                            </div>
+                <div class="pricing-grid">
+                    <article class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Amigurumis</h3>
+                            <span class="pricing-badge">Popular</span>
                         </div>
-                    </div>
+                        <div class="pricing-body">
+                            <div class="price-display">
+                                <span class="price">$45.000</span>
+                                <span class="period">/unidad</span>
+                            </div>
+                            <p class="text-muted">Diseños tiernos y personalizados.</p>
+                        </div>
+                    </article>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="pricing-card featured">
-                            <div class="pricing-header featured-header">
-                                <h3>Pack 6 amigurumis</h3>
-                                <span class="pricing-badge discount">⭐ Ahorra 15%</span>
-                            </div>
-                            <div class="pricing-body featured-body">
-                                <p class="text-muted">El favorito de regalos</p>
-                                <div class="price-display featured-price-display">
-                                    <span class="price">$229.500</span>
-                                    <span class="period">/pack</span>
-                                </div>
-                                <ul class="pricing-features">
-                                    <li>6 diseños únicos</li>
-                                    <li>Paleta de colores coordinada</li>
-                                    <li>Entrega en 3-4 semanas</li>
-                                    <li>Empaque de regalo deluxe</li>
-                                </ul>
-                                <a href="#contacto" class="btn btn-shop btn-sm w-100">Encargar pack</a>
-                            </div>
+                    <article class="pricing-card featured">
+                        <div class="pricing-header featured-header">
+                            <h3>Pack de amigurumis</h3>
+                            <span class="pricing-badge discount">Ahorra 15%</span>
                         </div>
-                    </div>
+                        <div class="pricing-body featured-body">
+                            <div class="price-display featured-price-display">
+                                <span class="price">$229.500</span>
+                                <span class="period">/pack</span>
+                            </div>
+                            <p class="text-muted">Ideal para regalos o colecciones.</p>
+                        </div>
+                    </article>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="pricing-card">
-                            <div class="pricing-header">
-                                <h3>Curso de crochet</h3>
-                                <span class="pricing-badge">Aprende</span>
-                            </div>
-                            <div class="pricing-body">
-                                <p class="text-muted">Ideal para principiantes</p>
-                                <div class="price-display">
-                                    <span class="price">$120.000</span>
-                                    <span class="period">/curso</span>
-                                </div>
-                                <ul class="pricing-features">
-                                    <li>4 sesiones de 2 horas</li>
-                                    <li>Materiales incluidos</li>
-                                    <li>Enseñanza personalizada</li>
-                                    <li>Acceso a tutoriales</li>
-                                </ul>
-                                <a href="#contacto" class="btn btn-shop btn-sm w-100">Reservar curso</a>
-                            </div>
+                    <article class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Cursos</h3>
+                            <span class="pricing-badge">Aprende</span>
                         </div>
-                    </div>
+                        <div class="pricing-body">
+                            <div class="price-display">
+                                <span class="price">$120.000</span>
+                                <span class="period">/curso</span>
+                            </div>
+                            <p class="text-muted">Sesiones guiadas para principiantes.</p>
+                        </div>
+                    </article>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="pricing-card">
-                            <div class="pricing-header">
-                                <h3>Bolsos personalizados</h3>
-                                <span class="pricing-badge">Artesanal</span>
-                            </div>
-                            <div class="pricing-body">
-                                <p class="text-muted">Accesorio único</p>
-                                <div class="price-display">
-                                    <span class="price">$85.000</span>
-                                    <span class="period">/bolso</span>
-                                </div>
-                                <ul class="pricing-features">
-                                    <li>Diseño personalizado</li>
-                                    <li>Materiales premium</li>
-                                    <li>Entrega en 2-3 semanas</li>
-                                    <li>Garantía de calidad</li>
-                                </ul>
-                                <a href="#contacto" class="btn btn-shop btn-sm w-100">Encargar bolso</a>
-                            </div>
+                    <article class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Bolsos personalizados</h3>
+                            <span class="pricing-badge">Artesanal</span>
                         </div>
-                    </div>
+                        <div class="pricing-body">
+                            <div class="price-display">
+                                <span class="price">$85.000</span>
+                                <span class="period">/bolso</span>
+                            </div>
+                            <p class="text-muted">Accesorios únicos con tu identidad.</p>
+                        </div>
+                    </article>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="pricing-card">
-                            <div class="pricing-header">
-                                <h3>Ramos tejidos</h3>
-                                <span class="pricing-badge">Regalo</span>
-                            </div>
-                            <div class="pricing-body">
-                                <p class="text-muted">Regalo que nunca se marchita</p>
-                                <div class="price-display">
-                                    <span class="price">$65.000</span>
-                                    <span class="period">/ramo</span>
-                                </div>
-                                <ul class="pricing-features">
-                                    <li>Flores eternas</li>
-                                    <li>Decoración personalizada</li>
-                                    <li>Entrega en 1-2 semanas</li>
-                                    <li>Presentación especial</li>
-                                </ul>
-                                <a href="#contacto" class="btn btn-shop btn-sm w-100">Pedir ramo</a>
-                            </div>
+                    <article class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Ramos tejidos</h3>
+                            <span class="pricing-badge">Regalo</span>
                         </div>
-                    </div>
+                        <div class="pricing-body">
+                            <div class="price-display">
+                                <span class="price">$65.000</span>
+                                <span class="period">/ramo</span>
+                            </div>
+                            <p class="text-muted">Flores eternas y delicadas.</p>
+                        </div>
+                    </article>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="pricing-card">
-                            <div class="pricing-header">
-                                <h3>Pedido personalizado</h3>
-                                <span class="pricing-badge">Especial</span>
-                            </div>
-                            <div class="pricing-body">
-                                <p class="text-muted">Tu idea, realidad tejida</p>
-                                <div class="price-display">
-                                    <span class="price">A consultar</span>
-                                    <span class="period">/proyecto</span>
-                                </div>
-                                <ul class="pricing-features">
-                                    <li>Diseño completamente único</li>
-                                    <li>Consulta sin compromiso</li>
-                                    <li>Seguimiento del proyecto</li>
-                                    <li>Precio justo</li>
-                                </ul>
-                                <a href="#contacto" class="btn btn-shop btn-sm w-100">Consultar</a>
-                            </div>
+                    <article class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Pedidos personalizados</h3>
+                            <span class="pricing-badge">Especial</span>
                         </div>
-                    </div>
+                        <div class="pricing-body">
+                            <div class="price-display">
+                                <span class="price">Consultar precio</span>
+                                <span class="period">/proyecto</span>
+                            </div>
+                            <p class="text-muted">Tu idea, realidad tejida.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
         <section id="cotizador" class="section-spacing quote-section">
             <div class="container">
-                <div class="row justify-content-between align-items-end mb-5">
+                <div class="row justify-content-between align-items-end mb-4">
                     <div class="col-lg-6">
                         <span class="section-label">JavaScript</span>
-                        <h2 class="section-title">Cotiza tu pedido tejido</h2>
+                        <h2 class="section-title">Configurador rápido de pedidos</h2>
                     </div>
                     <div class="col-lg-5">
                         <p class="text-muted mb-0">
-                            Elige el producto, tamano, cantidad y extras para calcular un precio aproximado antes de
-                            escribirnos.
+                            Ajusta el producto, el tamaño, la cantidad y los extras para ver una estimación instantánea.
                         </p>
                     </div>
                 </div>
@@ -626,16 +553,15 @@
                                         <select class="form-select" id="productoCotizado"></select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label" for="tamanoCotizado">Tamano</label>
+                                        <label class="form-label" for="tamanoCotizado">Tamaño</label>
                                         <select class="form-select" id="tamanoCotizado"></select>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label" for="cantidadCotizada">Cantidad</label>
-                                        <input class="form-control" id="cantidadCotizada" type="number" min="1" max="12"
-                                            value="1">
+                                        <input class="form-control" id="cantidadCotizada" type="number" min="1" max="12" value="1">
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label" for="extraCotizado">Extra decorativo</label>
+                                        <label class="form-label" for="extraCotizado">Extra / personalización</label>
                                         <select class="form-select" id="extraCotizado"></select>
                                     </div>
                                 </div>
@@ -644,11 +570,141 @@
 
                         <div class="col-lg-5">
                             <aside class="quote-result">
-                                <span class="quote-kicker">Total aproximado</span>
+                                <span class="quote-kicker">TOTAL APROXIMADO</span>
                                 <strong id="totalCotizado">$0</strong>
-                                <p id="detalleCotizado">Selecciona las opciones para ver tu cotizacion.</p>
+                                <p id="detalleCotizado">Selecciona las opciones para ver tu cotización.</p>
+                                <p class="quote-note">Precio estimado. La cotización final puede variar según colores, tiempo de elaboración y detalles personalizados.</p>
+                                <button class="btn btn-shop mt-3" id="cotizadorCTA" type="button">Solicitar este pedido</button>
                             </aside>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="carrito" class="section-spacing cart-section">
+            <div class="container">
+                <div class="section-heading text-center mb-4">
+                    <span class="section-label">Carrito</span>
+                    <h2 class="section-title">Tu cesta de compras</h2>
+                </div>
+                <div class="cart-layout">
+                    <div class="cart-card">
+                        <div id="carritoItemsContainer" class="cart-items"></div>
+                    </div>
+                    <aside class="cart-summary-card">
+                        <h3>Resumen</h3>
+                        <div class="summary-row"><span>Subtotal</span><strong id="subtotalResumen">$0</strong></div>
+                        <div class="summary-row"><span>Descuento</span><strong id="descuentoResumen">-$0</strong></div>
+                        <div class="summary-row total-row"><span>Total</span><strong id="totalResumen">$0</strong></div>
+                        <div class="coupon-box">
+                            <label class="form-label" for="codigoCupon">¿Tienes un código promocional?</label>
+                            <div class="coupon-input-row">
+                                <input class="form-control" id="codigoCupon" type="text" placeholder="LUNA10">
+                                <button class="btn btn-shop btn-sm" id="aplicarCupon" type="button">Aplicar</button>
+                            </div>
+                            <p class="coupon-message" id="mensajeCupon"></p>
+                        </div>
+                        <a href="#checkout" class="btn btn-shop w-100 mt-3">Ir al checkout</a>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section id="checkout" class="section-spacing checkout-section">
+            <div class="container">
+                <div class="checkout-card">
+                    <div class="checkout-header">
+                        <div>
+                            <span class="section-label">Checkout</span>
+                            <h2 class="section-title">Completa tu pedido</h2>
+                        </div>
+                        <div class="checkout-steps" aria-label="Pasos del checkout">
+                            <span class="step-pill active" data-step="1">Paso 1</span>
+                            <span class="step-pill" data-step="2">Paso 2</span>
+                            <span class="step-pill" data-step="3">Paso 3</span>
+                            <span class="step-pill" data-step="4">Paso 4</span>
+                        </div>
+                    </div>
+
+                    <div class="checkout-body">
+                        <div class="step-panel active" data-step="1">
+                            <h3>PASO 1 — Datos de envío</h3>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="checkoutNombre">Nombre completo</label>
+                                    <input class="form-control" id="checkoutNombre" type="text">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="checkoutCorreo">Correo electrónico</label>
+                                    <input class="form-control" id="checkoutCorreo" type="email">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="checkoutCiudad">Ciudad</label>
+                                    <input class="form-control" id="checkoutCiudad" type="text">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="checkoutDireccion">Dirección</label>
+                                    <input class="form-control" id="checkoutDireccion" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step-panel" data-step="2">
+                            <h3>PASO 2 — Método de entrega</h3>
+                            <div class="delivery-options">
+                                <label class="delivery-option">
+                                    <input type="radio" name="deliveryMethod" value="domicilio" checked>
+                                    <span>Entrega a domicilio</span>
+                                </label>
+                                <label class="delivery-option">
+                                    <input type="radio" name="deliveryMethod" value="retiro">
+                                    <span>Retiro en tienda</span>
+                                </label>
+                                <label class="delivery-option">
+                                    <input type="radio" name="deliveryMethod" value="express">
+                                    <span>Express nacional</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="step-panel" data-step="3">
+                            <h3>PASO 3 — Método de pago</h3>
+                            <div class="payment-options">
+                                <label class="delivery-option">
+                                    <input type="radio" name="paymentMethod" value="tarjeta" checked>
+                                    <span>Tarjeta</span>
+                                </label>
+                                <label class="delivery-option">
+                                    <input type="radio" name="paymentMethod" value="pse">
+                                    <span>PSE</span>
+                                </label>
+                                <label class="delivery-option">
+                                    <input type="radio" name="paymentMethod" value="transferencia">
+                                    <span>Transferencia</span>
+                                </label>
+                            </div>
+                            <div class="form-check mt-3">
+                                <input class="form-check-input" type="checkbox" id="checkoutAbono">
+                                <label class="form-check-label" for="checkoutAbono">Quiero pagar un abono del 50% para un pedido personalizado</label>
+                            </div>
+                            <p class="checkout-note">La pasarela real no está integrada; esta vista está preparada para una integración futura.</p>
+                        </div>
+
+                        <div class="step-panel" data-step="4">
+                            <h3>PASO 4 — Confirmación</h3>
+                            <div class="confirmation-box">
+                                <div class="summary-row"><span>Total</span><strong id="checkoutTotalConfirm">$0</strong></div>
+                                <div class="summary-row"><span>Abono inicial</span><strong id="checkoutAbonoConfirm">$0</strong></div>
+                                <div class="summary-row"><span>Saldo restante</span><strong id="checkoutSaldoConfirm">$0</strong></div>
+                                <p class="checkout-note">Al confirmar, el pedido se marca como compra verificada para activar el envío de reseñas en el detalle del producto.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkout-actions">
+                        <button class="btn btn-outline-dark" id="checkoutPrev" type="button">Anterior</button>
+                        <button class="btn btn-shop" id="checkoutNext" type="button">Siguiente</button>
                     </div>
                 </div>
             </div>
@@ -660,8 +716,8 @@
                     <div class="row g-4 align-items-center">
                         <div class="col-lg-5">
                             <span class="section-label">Encargos</span>
-                            <h2 class="section-title">Disenemos tu pieza ideal</h2>
-                            <p class="text-muted mb-4">Cuentame que quieres, tus colores favoritos y para cuando lo necesitas.</p>
+                            <h2 class="section-title">Diseñemos tu pieza ideal</h2>
+                            <p class="text-muted mb-4">Cuéntanos qué quieres, tus colores favoritos y para cuándo lo necesitas.</p>
                             <div class="contact-benefits">
                                 <div class="benefit-item">
                                     <i class="fas fa-check-circle"></i>
@@ -678,32 +734,46 @@
                             </div>
                         </div>
                         <div class="col-lg-7">
-                            <form class="contact-form">
+                            <form class="contact-form" id="contactForm" novalidate>
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input class="form-control" type="text" placeholder="Tu nombre" required>
+                                            <input class="form-control" id="contactNombre" type="text" placeholder="Tu nombre" required>
+                                            <div class="invalid-feedback" data-error-for="contactNombre"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input class="form-control" type="email" placeholder="Tu correo" required>
+                                            <input class="form-control" id="contactEmail" type="email" placeholder="Tu correo" required>
+                                            <div class="invalid-feedback" data-error-for="contactEmail"></div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <select class="form-select" required>
-                                                <option selected>Tipo de producto</option>
+                                            <select class="form-select" id="contactTipo" required>
+                                                <option value="">Tipo de producto</option>
                                                 <option>Amigurumi</option>
                                                 <option>Bolso</option>
                                                 <option>Accesorio</option>
                                                 <option>Pedido personalizado</option>
                                             </select>
+                                            <div class="invalid-feedback" data-error-for="contactTipo"></div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <textarea class="form-control" rows="4" placeholder="Describe tu idea" required></textarea>
+                                            <textarea class="form-control" id="contactDescripcion" rows="4" placeholder="Describe tu idea" required></textarea>
+                                            <div class="invalid-feedback" data-error-for="contactDescripcion"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input class="form-control" id="contactColores" type="text" placeholder="Colores favoritos">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input class="form-control" id="contactFecha" type="text" placeholder="Fecha requerida">
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -718,7 +788,69 @@
                 </div>
             </div>
         </section>
+
+        <section id="faq" class="section-spacing faq-section">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <span class="section-label">FAQ</span>
+                    <h2 class="section-title">Preguntas frecuentes</h2>
+                </div>
+                <div class="accordion faq-accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="faqOneHeading">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">¿Cuánto tarda un pedido?</button>
+                        </h3>
+                        <div id="faqOne" class="accordion-collapse collapse show" aria-labelledby="faqOneHeading" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">Los pedidos artesanales suelen tardar entre 1 y 3 semanas, según la complejidad y la personalización.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="faqTwoHeading">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">¿Realizan envíos nacionales?</button>
+                        </h3>
+                        <div id="faqTwo" class="accordion-collapse collapse" aria-labelledby="faqTwoHeading" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">Sí, trabajamos con envíos nacionales y coordinamos el costo según la ubicación y el tamaño de la pieza.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="faqThreeHeading">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">¿Cómo cuidar una pieza de crochet?</button>
+                        </h3>
+                        <div id="faqThree" class="accordion-collapse collapse" aria-labelledby="faqThreeHeading" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">Recomendamos lavarla a mano con agua fría y secarla al aire para conservar su forma y colores.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="faqFourHeading">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour">¿Cuál es la política de cambios?</button>
+                        </h3>
+                        <div id="faqFour" class="accordion-collapse collapse" aria-labelledby="faqFourHeading" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">Las piezas personalizadas no admiten cambios una vez confirmadas, pero si hay un error de producción se revisa de inmediato.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <div class="modal fade product-modal" id="productDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <button type="button" class="btn-close product-modal-close" data-bs-dismiss="modal" aria-label="Cerrar detalle"></button>
+                <div id="detalleProductoContenido" class="product-modal-body"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end cart-offcanvas" tabindex="-1" id="cartDrawer" aria-labelledby="cartDrawerLabel">
+        <div class="offcanvas-header">
+            <h5 id="cartDrawerLabel">Tu carrito</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar carrito"></button>
+        </div>
+        <div class="offcanvas-body" id="minicartBody"></div>
+    </div>
+
+    <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
 
     <footer class="footer">
         <div class="container">
