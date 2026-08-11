@@ -11,36 +11,88 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
+        <div class="container d-flex align-items-center justify-content-between">
             <a class="navbar-brand" href="#inicio">
                 <span class="brand-mark">H</span>
                 <span>Hilitos de Luna</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
-                aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="menuPrincipal">
-                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#destacados">Destacados</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#historia">Historia</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#galeria">Galeria</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#precios">Precios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#cotizador">Cotizador</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#inspiracion">Pinterest</a></li>
-                    <li class="nav-item"><a class="btn btn-shop btn-sm" href="#contacto">Encargar</a></li>
-                </ul>
+
+            <ul class="navbar-links d-none d-lg-flex list-unstyled mb-0">
+                <li><a class="nav-link" href="#inicio">Inicio</a></li>
+                <li><a class="nav-link" href="#productos">Tienda</a></li>
+                <li><a class="nav-link" href="#blog">Blog</a></li>
+            </ul>
+
+            <div class="d-flex align-items-center gap-2">
+                <div class="navbar-icons">
+                    <a href="#contacto" class="icon-btn" aria-label="Mi cuenta">
+                        <i class="fas fa-user" aria-hidden="true"></i>
+                    </a>
+                    <a href="#contacto" class="icon-btn" aria-label="Carrito de compras, 0 productos">
+                        <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+                        <span class="cart-badge" id="carritoContador">0</span>
+                    </a>
+                </div>
+                <button class="hamburger-btn" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu"
+                    aria-label="Abrir menu de navegacion">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
     </nav>
+
+    <div class="offcanvas offcanvas-end menu-offcanvas" tabindex="-1" id="offcanvasMenu"
+        aria-labelledby="offcanvasMenuLabel">
+        <div class="offcanvas-header">
+            <span class="navbar-brand mb-0" id="offcanvasMenuLabel">
+                <span class="brand-mark">H</span>
+                <span>Hilitos de Luna</span>
+            </span>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar menu"></button>
+        </div>
+        <div class="offcanvas-body">
+            <nav class="menu-group" aria-label="Tienda">
+                <span class="menu-group-title">Tienda</span>
+                <ul>
+                    <li><a href="#productos" data-bs-dismiss="offcanvas">Productos</a></li>
+                    <li><a href="#destacados" data-bs-dismiss="offcanvas">Destacados</a></li>
+                    <li><a href="#precios" data-bs-dismiss="offcanvas">Precios</a></li>
+                    <li><a href="#cotizador" data-bs-dismiss="offcanvas">Cotizador</a></li>
+                </ul>
+            </nav>
+            <nav class="menu-group" aria-label="Nosotros">
+                <span class="menu-group-title">Nosotros</span>
+                <ul>
+                    <li><a href="#historia" data-bs-dismiss="offcanvas">Historia</a></li>
+                    <li><a href="#galeria" data-bs-dismiss="offcanvas">Galeria</a></li>
+                </ul>
+            </nav>
+            <nav class="menu-group" aria-label="Inspiracion">
+                <span class="menu-group-title">Inspiracion</span>
+                <ul>
+                    <li><a href="#blog" data-bs-dismiss="offcanvas">Blog</a></li>
+                    <li><a href="#inspiracion" data-bs-dismiss="offcanvas">Pinterest</a></li>
+                </ul>
+            </nav>
+            <nav class="menu-group" aria-label="Ayuda">
+                <span class="menu-group-title">Ayuda</span>
+                <ul>
+                    <li><a href="#faq" data-bs-dismiss="offcanvas">FAQ</a></li>
+                    <li><a href="#contacto" data-bs-dismiss="offcanvas">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="#contacto" class="btn btn-shop w-100 menu-cta" data-bs-dismiss="offcanvas">Encargar mi pieza</a>
+        </div>
+    </div>
 
     <header id="inicio" class="hero">
         <div class="container">
@@ -304,7 +356,11 @@
                                 <span class="blog-date">15 de mayo, 2026</span>
                                 <h3>Comenzando con amigurumi</h3>
                                 <p>Aprende los básicos para crear tus primeros muñecos tejidos. Consejos para principiantes.</p>
-                                <a href="#" class="read-more">Leer más</a>
+                                <a href="#" class="read-more" data-title="Comenzando con amigurumi"
+                                    data-date="15 de mayo, 2026"
+                                    data-image="https://i.pinimg.com/736x/0a/ae/f6/0aaef686f9bcc8b382236074e2072e4d.jpg"
+                                    data-summary="Aprende los básicos para crear tus primeros muñecos tejidos. Consejos para principiantes."
+                                    data-content="Aprender a tejer amigurumis empieza por dominar la vuelta inicial, la tensión del hilo y la forma de los aumentos.||Con paciencia, los primeros muñecos salen con cuerpo redondo y detalles simples, pero muy expresivos.||A medida que practiques, podrás crear personajes con personalidad propia usando colores, accesorios y pequeñas variaciones de puntada.">Leer más</a>
                             </div>
                         </article>
                     </div>
@@ -317,7 +373,11 @@
                                 <span class="blog-date">10 de mayo, 2026</span>
                                 <h3>Detalles adorables en crochet</h3>
                                 <p>Tips para crear detalles delicados y expresivos en tus piezas tejidas.</p>
-                                <a href="#" class="read-more">Leer más</a>
+                                <a href="#" class="read-more" data-title="Detalles adorables en crochet"
+                                    data-date="10 de mayo, 2026"
+                                    data-image="https://i.pinimg.com/736x/ae/dc/38/aedc38026abfcb55217f2ce4659a151e.jpg"
+                                    data-summary="Tips para crear detalles delicados y expresivos en tus piezas tejidas."
+                                    data-content="Los detalles marcan la diferencia en una pieza hecha a mano: ojos, sonrisas, lazos, sombreros y pequeñas flores pueden cambiar por completo la personalidad del trabajo.||Si quieres que tu muñeco se vea más expresivo, juega con las proporciones y usa cambios de color con intención.||Una forma sencilla de lograrlo es practicar la misma forma varias veces y experimentar con texturas en puntadas pequeñas.">Leer más</a>
                             </div>
                         </article>
                     </div>
@@ -330,7 +390,11 @@
                                 <span class="blog-date">5 de mayo, 2026</span>
                                 <h3>Bolsos tejidos paso a paso</h3>
                                 <p>Tutorial completo para crear bolsos únicos y personalizados.</p>
-                                <a href="#" class="read-more">Leer más</a>
+                                <a href="#" class="read-more" data-title="Bolsos tejidos paso a paso"
+                                    data-date="5 de mayo, 2026"
+                                    data-image="https://i.pinimg.com/736x/be/68/09/be68093c20e1df95900c7458e324ce70.jpg"
+                                    data-summary="Tutorial completo para crear bolsos únicos y personalizados."
+                                    data-content="Para crear un bolso tejido bonito y resistente, comienza con una base firme y una cadena tamaño adecuado para la silueta que quieres lograr.||A medida que sigas la estructura, puedes añadir detalles como asas, botones o borde decorativo para darle más personalidad.||Un bolso hecho a mano luce mucho más especial cuando combina una paleta armónica con un cierre funcional y un acabado limpio.">Leer más</a>
                             </div>
                         </article>
                     </div>
@@ -353,7 +417,7 @@
                 <div class="row g-4 pinterest-grid">
                     <div class="col-md-6 col-lg-4">
                         <div class="pin-card">
-                            <iframe src="https://assets.pinterest.com/ext/embed.html?id=668503138472699040"
+                            <iframe src="https://pin.it/c4Dpc5ZhY"
                                 title="Inspiracion crochet 1" loading="lazy"></iframe>
                         </div>
                     </div>
@@ -716,9 +780,22 @@
         </div>
     </footer>
 
+    <div class="blog-modal-backdrop" id="blogModalBackdrop" aria-hidden="true">
+        <div class="blog-modal" role="dialog" aria-modal="true" aria-labelledby="blogModalTitle">
+            <button class="blog-modal-close" type="button" aria-label="Cerrar articulo">&times;</button>
+            <img id="blogModalImage" class="blog-modal-image" src="" alt="Articulo completo del blog" loading="lazy">
+            <div class="blog-modal-header">
+                <span class="blog-date" id="blogModalDate"></span>
+                <h3 id="blogModalTitle"></h3>
+            </div>
+            <p class="blog-modal-summary" id="blogModalSummary"></p>
+            <div class="blog-modal-body" id="blogModalBody"></div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script async defer src="https://assets.pinterest.com/js/pinit.js"></script>
-    <script src="script.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>

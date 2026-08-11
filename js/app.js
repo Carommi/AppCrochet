@@ -71,4 +71,58 @@ function iniciarCotizador() {
     calcularCotizacion();
 }
 
+const blogModalBackdrop = document.getElementById("blogModalBackdrop");
+const blogModalTitle = document.getElementById("blogModalTitle");
+const blogModalDate = document.getElementById("blogModalDate");
+const blogModalImage = document.getElementById("blogModalImage");
+const blogModalSummary = document.getElementById("blogModalSummary");
+const blogModalBody = document.getElementById("blogModalBody");
+const blogModalClose = document.querySelector(".blog-modal-close");
+
+function abrirArticulo(blogLink) {
+    const titulo = blogLink.dataset.title || "Artículo";
+    const fecha = blogLink.dataset.date || "";
+    const imagen = blogLink.dataset.image || "";
+    const resumen = blogLink.dataset.summary || "";
+    const contenido = (blogLink.dataset.content || "").split("||").filter(Boolean);
+
+    blogModalTitle.textContent = titulo;
+    blogModalDate.textContent = fecha;
+    blogModalImage.src = imagen;
+    blogModalImage.alt = titulo;
+    blogModalSummary.textContent = resumen;
+    blogModalBody.innerHTML = contenido.map(parrafo => `<p>${parrafo}</p>`).join("");
+
+    blogModalBackdrop.classList.add("is-open");
+    blogModalBackdrop.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+}
+
+function cerrarArticulo() {
+    blogModalBackdrop.classList.remove("is-open");
+    blogModalBackdrop.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+}
+
+document.querySelectorAll(".read-more").forEach(enlace => {
+    enlace.addEventListener("click", event => {
+        event.preventDefault();
+        abrirArticulo(enlace);
+    });
+});
+
+blogModalClose.addEventListener("click", cerrarArticulo);
+
+blogModalBackdrop.addEventListener("click", event => {
+    if (event.target === blogModalBackdrop) {
+        cerrarArticulo();
+    }
+});
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && blogModalBackdrop.classList.contains("is-open")) {
+        cerrarArticulo();
+    }
+});
+
 iniciarCotizador();
