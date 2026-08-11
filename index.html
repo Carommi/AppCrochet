@@ -356,7 +356,12 @@
                                 <span class="blog-date">15 de mayo, 2026</span>
                                 <h3>Comenzando con amigurumi</h3>
                                 <p>Aprende los básicos para crear tus primeros muñecos tejidos. Consejos para principiantes.</p>
-                                <a href="#" class="read-more">Leer más</a>
+                                <a href="#" class="read-more"
+                                    data-title="Comenzando con amigurumi"
+                                    data-date="15 de mayo, 2026"
+                                    data-image="https://i.pinimg.com/736x/0a/ae/f6/0aaef686f9bcc8b382236074e2072e4d.jpg"
+                                    data-summary="Todo empieza con una hebra, una aguja y una idea muy especial: crear un personaje suave, adorable y lleno de personalidad."
+                                    data-content="Los amigurumis empiezan con un círculo mágico y unas puntadas sencillas, pero la clave está en la constancia. Con paciencia, cada vuelta toma forma y el muñeco empieza a cobrar personalidad.||Para principiantes, es mejor elegir un hilo suave y una aguja apropiada para que el tejido se sienta cómodo desde el inicio. También ayuda trabajar con patrones claros y conservar la tensión uniforme para que las piezas queden armoniosas.">Leer más</a>
                             </div>
                         </article>
                     </div>
@@ -369,7 +374,12 @@
                                 <span class="blog-date">10 de mayo, 2026</span>
                                 <h3>Detalles adorables en crochet</h3>
                                 <p>Tips para crear detalles delicados y expresivos en tus piezas tejidas.</p>
-                                <a href="#" class="read-more">Leer más</a>
+                                <a href="#" class="read-more"
+                                    data-title="Detalles adorables en crochet"
+                                    data-date="10 de mayo, 2026"
+                                    data-image="https://i.pinimg.com/736x/ae/dc/38/aedc38026abfcb55217f2ce4659a151e.jpg"
+                                    data-summary="Los pequeños detalles son los que convierten una pieza en algo imposible de olvidar: ojos expresivos, flores, lazos y texturas suaves."
+                                    data-content="Un buen detalle no necesita ser complicado; a veces, la diferencia está en la elección de colores y en cómo se trabaja cada pequeña forma. Una florecita, un lazo o una sonrisa a mano pueden cambiar completamente la personalidad del amigurumi.||Si quieres que tus piezas luzcan más tiernas, prueba jugar con texturas: puntos más apretados, pequeños remates o accesorios con contrastes suaves. Así cada muñeco se vuelve más memorable sin perder su esencia artesanal.">Leer más</a>
                             </div>
                         </article>
                     </div>
@@ -382,7 +392,12 @@
                                 <span class="blog-date">5 de mayo, 2026</span>
                                 <h3>Bolsos tejidos paso a paso</h3>
                                 <p>Tutorial completo para crear bolsos únicos y personalizados.</p>
-                                <a href="#" class="read-more">Leer más</a>
+                                <a href="#" class="read-more"
+                                    data-title="Bolsos tejidos paso a paso"
+                                    data-date="5 de mayo, 2026"
+                                    data-image="https://i.pinimg.com/736x/be/68/09/be68093c20e1df95900c7458e324ce70.jpg"
+                                    data-summary="Un bolso tejido no solo es útil, también puede convertirse en un accesorio que refleja estilo, color y personalidad en cada puntada."
+                                    data-content="Para hacer un bolso artesanal, empieza por definir la forma y el tamaño que necesitas. Luego diseña la base con puntadas firmes para que soporte bien el uso diario y mantenga su estructura con buena caída.||La parte más divertida llega cuando decides los detalles: asas, botones, remates o ajustes de color. Un bolso tejido se vuelve especial cuando combina funcionalidad con un toque único que te haga sentirlo como tuyo.">Leer más</a>
                             </div>
                         </article>
                     </div>
@@ -767,6 +782,19 @@
             </div>
         </div>
     </footer>
+
+    <div class="blog-modal-backdrop" id="blogModalBackdrop" aria-hidden="true">
+        <div class="blog-modal" role="dialog" aria-modal="true" aria-labelledby="blogModalTitle">
+            <button type="button" class="blog-modal-close" aria-label="Cerrar artículo">×</button>
+            <img class="blog-modal-image" id="blogModalImage" src="" alt="">
+            <header class="blog-modal-header">
+                <span class="blog-date" id="blogModalDate"></span>
+                <h3 id="blogModalTitle"></h3>
+            </header>
+            <p class="blog-modal-summary" id="blogModalSummary"></p>
+            <div class="blog-modal-body" id="blogModalBody"></div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script async defer src="https://assets.pinterest.com/js/pinit.js"></script>

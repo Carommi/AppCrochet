@@ -80,6 +80,10 @@ const blogModalBody = document.getElementById("blogModalBody");
 const blogModalClose = document.querySelector(".blog-modal-close");
 
 function abrirArticulo(blogLink) {
+    if (!blogModalBackdrop || !blogModalTitle || !blogModalDate || !blogModalImage || !blogModalSummary || !blogModalBody) {
+        return;
+    }
+
     const titulo = blogLink.dataset.title || "Artículo";
     const fecha = blogLink.dataset.date || "";
     const imagen = blogLink.dataset.image || "";
@@ -99,6 +103,10 @@ function abrirArticulo(blogLink) {
 }
 
 function cerrarArticulo() {
+    if (!blogModalBackdrop) {
+        return;
+    }
+
     blogModalBackdrop.classList.remove("is-open");
     blogModalBackdrop.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
@@ -111,16 +119,20 @@ document.querySelectorAll(".read-more").forEach(enlace => {
     });
 });
 
-blogModalClose.addEventListener("click", cerrarArticulo);
+if (blogModalClose) {
+    blogModalClose.addEventListener("click", cerrarArticulo);
+}
 
-blogModalBackdrop.addEventListener("click", event => {
-    if (event.target === blogModalBackdrop) {
-        cerrarArticulo();
-    }
-});
+if (blogModalBackdrop) {
+    blogModalBackdrop.addEventListener("click", event => {
+        if (event.target === blogModalBackdrop) {
+            cerrarArticulo();
+        }
+    });
+}
 
 document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && blogModalBackdrop.classList.contains("is-open")) {
+    if (event.key === "Escape" && blogModalBackdrop && blogModalBackdrop.classList.contains("is-open")) {
         cerrarArticulo();
     }
 });
