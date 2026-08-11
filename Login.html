@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar - Hilitos de Luna</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/panel.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="brand-mark">H</span>
+                <span>Hilitos de Luna</span>
+            </a>
+            <a href="index.html" class="btn btn-outline-dark btn-sm">
+                <i class="fas fa-arrow-left"></i> Volver a la tienda
+            </a>
+        </div>
+    </nav>
+
+    <div class="hl-auth-wrap">
+        <div class="hl-auth-card">
+
+            <!-- Vista: Registro / Login -->
+            <div id="vistaFormularios">
+                <div class="hl-auth-tabs">
+                    <button type="button" id="tabLogin" class="active" data-tab="login">Iniciar sesion</button>
+                    <button type="button" id="tabRegistro" data-tab="registro">Crear cuenta</button>
+                </div>
+
+                <div id="errorGlobal" class="hl-error-box"></div>
+
+                <!-- LOGIN -->
+                <form id="formLogin" novalidate>
+                    <div class="hl-field">
+                        <label for="loginCorreo">Correo electronico</label>
+                        <input type="email" class="form-control" id="loginCorreo" required placeholder="tucorreo@email.com">
+                    </div>
+                    <div class="hl-field">
+                        <label for="loginPass">Contrasena</label>
+                        <div class="hl-pass-wrap">
+                            <input type="password" class="form-control" id="loginPass" required placeholder="********">
+                            <button type="button" class="hl-toggle-pass" data-target="loginPass"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="hl-row-between">
+                        <label class="d-flex align-items-center gap-2 mb-0">
+                            <input type="checkbox" id="loginRecordarme"> Recordarme
+                        </label>
+                        <button type="button" class="hl-link-btn" id="btnOlvide">Olvide mi contrasena</button>
+                    </div>
+                    <button type="submit" class="btn btn-shop btn-lg w-100">Ingresar</button>
+                    <p class="text-center mt-3 text-muted small">Cuenta demo: camila@correo.com / Camila123</p>
+                </form>
+
+                <!-- REGISTRO -->
+                <form id="formRegistro" class="d-none" novalidate>
+                    <div class="hl-field">
+                        <label for="regNombre">Nombre completo</label>
+                        <input type="text" class="form-control" id="regNombre" required placeholder="Tu nombre completo">
+                    </div>
+                    <div class="hl-field">
+                        <label for="regCorreo">Correo electronico</label>
+                        <input type="email" class="form-control" id="regCorreo" required placeholder="tucorreo@email.com">
+                    </div>
+                    <div class="hl-field">
+                        <label for="regPass">Contrasena</label>
+                        <div class="hl-pass-wrap">
+                            <input type="password" class="form-control" id="regPass" required placeholder="Minimo 8 caracteres">
+                            <button type="button" class="hl-toggle-pass" data-target="regPass"><i class="fas fa-eye"></i></button>
+                        </div>
+                        <p class="hl-hint" id="hintPass">Debe tener minimo 8 caracteres, una letra y un numero.</p>
+                    </div>
+                    <button type="submit" class="btn btn-shop btn-lg w-100">Crear cuenta</button>
+                </form>
+            </div>
+
+            <!-- Vista: Verificacion de correo -->
+            <div id="vistaVerificacion" class="hl-verify-box d-none">
+                <i class="fas fa-envelope-circle-check"></i>
+                <h3>Revisa tu correo</h3>
+                <p class="text-muted">Enviamos un enlace de verificacion a <strong id="correoVerificar"></strong>.
+                    Este es un flujo de demostracion: no se envio un correo real.</p>
+                <button class="btn btn-shop w-100" id="btnSimularVerificacion">Simular verificacion y continuar</button>
+            </div>
+
+            <!-- Vista: Recuperar contrasena -->
+            <div id="vistaRecuperar" class="hl-recover-box d-none">
+                <i class="fas fa-key"></i>
+                <h3>Recuperar contrasena</h3>
+                <p class="text-muted">Ingresa tu correo. En un entorno de produccion se enviaria un enlace real de recuperacion.</p>
+                <div class="hl-field text-start">
+                    <input type="email" class="form-control" id="recuperarCorreo" placeholder="tucorreo@email.com">
+                </div>
+                <button class="btn btn-shop w-100 mb-2" id="btnEnviarRecuperacion">Enviar enlace (demo)</button>
+                <button class="btn btn-outline-dark w-100" id="btnVolverLogin">Volver a iniciar sesion</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/store.js"></script>
+    <script src="js/ui-components.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>
