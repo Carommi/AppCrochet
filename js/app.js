@@ -267,6 +267,9 @@ function filtrarYOrdenarProductos() {
         if (filtroActual === "all") {
             return true;
         }
+        if (filtroActual === "favoritos") {
+            return favoritos.includes(producto.id);
+        }
         if (filtroActual === "otros") {
             return producto.categoria === "otros";
         }
@@ -620,7 +623,14 @@ function eliminarProductoCarrito(productoId) {
 function irPasoCheckout(delta) {
     const maxStep = 4;
     const minStep = 1;
-    pasoCheckout = Math.max(minStep, Math.min(maxStep, pasoCheckout + delta));
+    const siguientePaso = Math.max(minStep, Math.min(maxStep, pasoCheckout + delta));
+
+    if (siguientePaso === maxStep && carrito.length === 0) {
+        mostrarToast("Tu carrito está vacío, agrega un producto para continuar.", "error");
+        return;
+    }
+
+    pasoCheckout = siguientePaso;
     document.querySelectorAll(".step-pill").forEach(pill => {
         pill.classList.toggle("active", Number(pill.dataset.step) === pasoCheckout);
     });
@@ -629,6 +639,9 @@ function irPasoCheckout(delta) {
     });
     if (checkoutNext) {
         checkoutNext.textContent = pasoCheckout === maxStep ? "Confirmar pedido" : "Siguiente";
+    }
+    if (checkoutPrev) {
+        checkoutPrev.disabled = pasoCheckout === minStep;
     }
 }
 
@@ -695,11 +708,24 @@ function inicializarEventos() {
     }
 
     if (toggleFavoritos) {
+        const actualizarTextoFavoritos = () => {
+            toggleFavoritos.textContent = filtroActual === "favoritos" ? "Ver todos" : "Ver favoritos";
+        };
+
         toggleFavoritos.addEventListener("click", () => {
-            filtroActual = favoritos.length ? "favoritos" : "all";
-            const productosVisibles = favoritos.length ? productosCatalogo.filter(item => favoritos.includes(item.id)) : productosCatalogo;
-            renderizarProductos(productosVisibles);
+            if (filtroActual === "favoritos") {
+                filtroActual = "all";
+            } else if (favoritos.length) {
+                filtroActual = "favoritos";
+            } else {
+                filtroActual = "all";
+                mostrarToast("Aún no tienes favoritos guardados.", "error");
+            }
+            filtrarYOrdenarProductos();
+            actualizarTextoFavoritos();
         });
+
+        actualizarTextoFavoritos();
     }
 
     if (productosGrid) {
